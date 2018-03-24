@@ -9,9 +9,15 @@
 
 <form action="" method="POST">
 	{{ form.hidden_tag() }}
-	{{ form.name.label }} {{ form.name() }}
-	{{ form.gif_picks.label }} {{ form.gif_picks() }}
-	{{ form.submit.label }}{{ form.submit() }}
+	{{ form.name.label }} {{ form.name() }}<br>
+	{{ form.gif_picks.label }} {{ form.gif_picks() }}<br>
+	{{ form.submit() }}
 </form>
+
+{% for field, errors in form.errors.items() %}
+<div class="alert alert-error">
+    {{ form[field].label }}: {{ ', '.join(errors) }}
+</div>
+{% endfor %}
 
 {% endblock %}
